@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pizarra Verde: el fútbol explicado de forma clara y rigurosa</title>
+<meta name="description" content="Guía de referencia sobre el fútbol: qué es, cómo nació, reglas vigentes, posiciones, tácticas y competiciones. Información contrastada con fuentes oficiales.">
+<style>
+:root{
+  --bg:#fbfaf6; --surface:#ffffff; --text:#1d2420; --muted:#5c6862;
+  --green:#14532d; --green-2:#1f7a45; --accent:#e0a526; --line:#e3e0d5;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 8px 24px rgba(20,60,35,.07);
+  --serif:Georgia,"Times New Roman",serif; --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+:root[data-theme="dark"]{
+  --bg:#0e1511; --surface:#16201a; --text:#e7ede9; --muted:#9fb0a6;
+  --green:#7fd6a0; --green-2:#58c183; --accent:#f0bd45; --line:#25322a;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--bg);color:var(--text);font:18px/1.75 var(--serif);transition:background .25s,color .25s}
+a{color:var(--green-2)}
+.progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--accent);z-index:100}
+header.top{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{max-width:1100px;margin:auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;font-family:var(--sans)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.02em;color:var(--green);text-decoration:none;font-size:1.15rem}
+.brand svg{width:30px;height:30px}
+nav.links{display:flex;gap:22px;font-size:.92rem}
+nav.links a{color:var(--muted);text-decoration:none;font-weight:500}
+nav.links a:hover{color:var(--green)}
+.theme{border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:999px;padding:7px 14px;cursor:pointer;font:600 .85rem var(--sans)}
+@media(max-width:720px){nav.links{display:none}}
+
+.hero{background:linear-gradient(135deg,#0f3d22,#14532d 55%,#1f7a45);color:#fff;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;opacity:.13;
+  background:
+  linear-gradient(#fff,#fff) center/2px 100% no-repeat,
+  radial-gradient(circle at center,transparent 68px,#fff 69px,#fff 71px,transparent 72px);}
+.hero-in{max-width:820px;margin:auto;padding:84px 20px 76px;position:relative;font-family:var(--sans)}
+.kicker{display:inline-block;background:var(--accent);color:#1d1600;font-weight:800;font-size:.75rem;letter-spacing:.09em;text-transform:uppercase;padding:5px 12px;border-radius:4px}
+.hero h1{font:800 clamp(2rem,5.2vw,3.4rem)/1.1 var(--sans);letter-spacing:-.03em;margin:20px 0 16px}
+.hero p.lead{font:400 1.2rem/1.6 var(--serif);opacity:.92;margin:0 0 24px;max-width:640px}
+.meta{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.88rem;opacity:.85}
+.cta{display:inline-block;margin-top:28px;background:#fff;color:var(--green);font-weight:700;padding:13px 24px;border-radius:8px;text-decoration:none}
+.cta:hover{transform:translateY(-1px)}
+
+.layout{max-width:1100px;margin:auto;padding:48px 20px 20px;display:grid;grid-template-columns:240px minmax(0,1fr);gap:56px}
+@media(max-width:900px){.layout{grid-template-columns:1fr;gap:0}}
+aside.toc{position:sticky;top:84px;align-self:start;font-family:var(--sans);font-size:.92rem}
+aside.toc h2{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+aside.toc ol{list-style:none;margin:0;padding:0;border-left:2px solid var(--line)}
+aside.toc a{display:block;padding:6px 14px;margin-left:-2px;border-left:2px solid transparent;color:var(--muted);text-decoration:none}
+aside.toc a.on{color:var(--green);border-left-color:var(--accent);font-weight:700}
+@media(max-width:900px){
+  aside.toc{position:static;margin-bottom:32px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+}
+article{max-width:700px}
+article h2{font:800 1.85rem/1.2 var(--sans);letter-spacing:-.02em;color:var(--green);margin:56px 0 14px}
+article h2:first-of-type{margin-top:0}
+article h3{font:700 1.2rem var(--sans);margin:28px 0 6px}
+article p{margin:0 0 18px}
+.summary{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:10px;padding:20px 24px;box-shadow:var(--shadow);margin-bottom:36px;font-family:var(--sans);font-size:.98rem;line-height:1.65}
+.summary strong{display:block;margin-bottom:6px}
+.summary ul{margin:0;padding-left:20px}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 22px;margin:26px 0;font-family:var(--sans);font-size:.95rem;line-height:1.6;box-shadow:var(--shadow)}
+.fact b{color:var(--green)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:24px 0;font-family:var(--sans)}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;text-align:center}
+.stat b{display:block;font-size:1.9rem;color:var(--green);letter-spacing:-.02em}
+.stat span{font-size:.82rem;color:var(--muted)}
+table{width:100%;border-collapse:collapse;font:.93rem/1.5 var(--sans);margin:22px 0;background:var(--surface);border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}
+th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--green);color:#fff;font-weight:700}
+:root[data-theme="dark"] th{color:#0e1511}
+tr:last-child td{border-bottom:0}
+.pitch{margin:28px 0;border-radius:12px;overflow:hidden;box-shadow:var(--shadow);background:#1f7a45}
+.pitch svg{display:block;width:100%;height:auto}
+.pitch figcaption{background:var(--surface);padding:10px 16px;font:.82rem var(--sans);color:var(--muted)}
+.formations{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px;font-family:var(--sans)}
+.formations button{border:1px solid var(--line);background:var(--surface);color:var(--text);padding:8px 16px;border-radius:999px;font:600 .88rem var(--sans);cursor:pointer}
+.formations button.on{background:var(--green);color:#fff;border-color:var(--green)}
+:root[data-theme="dark"] .formations button.on{color:#0e1511}
+.tabnote{font:.92rem/1.6 var(--sans);color:var(--muted);margin:10px 0 0}
+
+details{background:var(--surface);border:1px solid var(--line);border-radius:10px;margin:10px 0;font-family:var(--sans)}
+summary{cursor:pointer;padding:15px 18px;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::after{content:"+";color:var(--accent);font-size:1.3rem;line-height:1}
+details[open] summary::after{content:"–"}
+details p{padding:0 18px;margin:0 0 16px;font-size:.96rem;line-height:1.65}
+.soon{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:22px 0;font-family:var(--sans)}
+.soon div{background:var(--surface);border:1px dashed var(--line);border-radius:10px;padding:14px 16px;font-size:.92rem}
+.soon small{display:block;color:var(--muted);margin-top:3px}
+.sources{font-family:var(--sans);font-size:.92rem;line-height:1.7}
+.sources li{margin-bottom:8px}
+.note{font:.85rem/1.55 var(--sans);color:var(--muted);border-top:1px solid var(--line);padding-top:16px;margin-top:40px}
+footer{margin-top:60px;background:var(--green);color:#fff;font-family:var(--sans)}
+:root[data-theme="dark"] footer{background:#0a100d;border-top:1px solid var(--line)}
+.foot{max-width:1100px;margin:auto;padding:36px 20px;display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;font-size:.88rem;opacity:.95}
+.foot a{color:#fff}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header class="top">
+  <div class="bar">
+    <a class="brand" href="#inicio" aria-label="Pizarra Verde, inicio">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#14532d"/><rect x="5" y="7" width="22" height="18" rx="1" fill="none" stroke="#fff" stroke-width="1.6"/><line x1="16" y1="7" x2="16" y2="25" stroke="#fff" stroke-width="1.6"/><circle cx="16" cy="16" r="3.4" fill="none" stroke="#e0a526" stroke-width="1.6"/></svg>
+      Pizarra Verde
+    </a>
+    <nav class="links" aria-label="Principal">
+      <a href="#origen">Historia</a>
+      <a href="#reglas">Reglas</a>
+      <a href="#tactica">Táctica</a>
+      <a href="#competiciones">Competiciones</a>
+      <a href="#faq">Preguntas</a>
+    </nav>
+    <button class="theme" id="theme" type="button" aria-label="Cambiar entre modo claro y oscuro">Modo oscuro</button>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="hero-in">
+    <span class="kicker">Guía de referencia</span>
+    <h1>El fútbol: historia, reglas, tácticas y todo lo que debes saber</h1>
+    <p class="lead">Un recorrido claro, ordenado y con fuentes oficiales por el deporte más practicado del planeta, pensado tanto para quien empieza como para quien quiere entender el juego a fondo.</p>
+    <div class="meta">
+      <span>Por la Redacción de Pizarra Verde</span>
+      <span>Actualizado: 29 de octubre de 2026</span>
+      <span id="readtime">Lectura: ~8 min</span>
+    </div>
+    <a class="cta" href="#que-es">Empezar a leer</a>
+  </div>
+</section>
+
+<div class="layout">
+  <aside class="toc" aria-label="Índice del artículo">
+    <h2>En este artículo</h2>
+    <ol id="toc"></ol>
+  </aside>
+
+  <article id="article">
+    <div class="summary">
+      <strong>Lo esencial en 30 segundos</strong>
+      <ul>
+        <li>Dos equipos de once jugadores compiten por marcar más goles en 90 minutos, con la mano reservada al portero dentro de su área.</li>
+        <li>El fútbol moderno se codificó en Inglaterra en 1863 y hoy lo regula The IFAB mediante 17 Leyes.</li>
+        <li>La edición vigente de las Reglas de Juego es la 2026/27, en vigor desde el 1 de julio de 2026.</li>
+      </ul>
+    </div>
+
+    <h2 id="que-es" data-toc="¿Qué es el fútbol?">¿Qué es el fútbol?</h2>
+    <p>El fútbol es un deporte de equipo en el que dos conjuntos se disputan un balón con el objetivo de introducirlo en la portería rival. Gana quien marca más goles al término del tiempo reglamentario. Su sencillez, porque basta un balón y un espacio, explica en buena medida su difusión mundial.</p>
+    <div class="grid">
+      <div class="stat"><b>11</b><span>jugadores por equipo en el campo</span></div>
+      <div class="stat"><b>90'</b><span>dos tiempos de 45 minutos</span></div>
+      <div class="stat"><b>17</b><span>Leyes del Juego</span></div>
+      <div class="stat"><b>1863</b><span>fundación de la Football Association</span></div>
+    </div>
+
+    <h2 id="origen" data-toc="Origen e historia">Origen e historia</h2>
+    <p>Existen juegos de pelota con los pies en muchas civilizaciones antiguas, pero el fútbol tal como lo conocemos nace en Inglaterra en el siglo XIX. En las escuelas y clubes circulaban reglas distintas, y una de las grandes discusiones era si se permitía llevar el balón con las manos.</p>
+    <p>En 1863 se fundó la Football Association, que redactó un reglamento común. Desde 1886, The IFAB se encarga de mantener y actualizar las Reglas de Juego. En 1904 se creó la FIFA en París para coordinar el fútbol internacional.</p>
+    <table>
+      <thead><tr><th>Año</th><th>Hito</th></tr></thead>
+      <tbody>
+        <tr><td>1863</td><td>Se funda la Football Association y se establece un reglamento común.</td></tr>
+        <tr><td>1886</td><td>Nace The IFAB, responsable de las Reglas de Juego.</td></tr>
+        <tr><td>1904</td><td>Se funda la FIFA.</td></tr>
+        <tr><td>2026</td><td>La selección española gana su segunda Copa del Mundo, tras la de 2010.</td></tr>
+      </tbody>
+    </table>
+    <p class="note" style="border:0;padding:0;margin:-8px 0 18px">Fechas fundacionales según las instituciones citadas en la bibliografía. Se ampliarán con dos fuentes independientes en las páginas de historia.</p>
+
+    <h2 id="reglas" data-toc="Reglas básicas">Reglas básicas</h2>
+    <p>Las Reglas de Juego las publica The IFAB cada temporada y son comunes en todo el mundo, aunque cada competición puede añadir su propia normativa sobre aspectos como el formato o las sustituciones.</p>
+    <h3>Lo fundamental</h3>
+    <p>Cada equipo alinea hasta once jugadores, uno de ellos portero. El partido se divide en dos tiempos, y el árbitro añade el tiempo perdido por lesiones, sustituciones u otras interrupciones. La mano o el brazo solo pueden tocar el balón al portero dentro de su área, salvo en el saque de banda.</p>
+    <div class="fact"><b>Novedad vigente.</b> Las Leyes 2026/27 entraron en vigor el 1 de julio de 2026 e incorporan medidas contra la pérdida de tiempo, como protocolos para saques de banda y de puerta, para la atención médica fuera del campo y para las sustituciones. Antes de aplicar una regla concreta, consulta siempre la edición oficial y el reglamento de tu competición.</div>
+    <h3>Faltas, tarjetas y fuera de juego</h3>
+    <p>Las infracciones se sancionan con tiros libres o penaltis. Las tarjetas amarilla y roja indican amonestación y expulsión. El fuera de juego existe para impedir que un atacante se quede esperando junto a la portería rival; su aplicación exacta se detalla en la Ley 11.</p>
+
+    <h2 id="posiciones" data-toc="Posiciones">Posiciones de los jugadores</h2>
+    <table>
+      <thead><tr><th>Línea</th><th>Función principal</th></tr></thead>
+      <tbody>
+        <tr><td>Portero</td><td>Evita los goles y es el único que puede usar las manos en su área.</td></tr>
+        <tr><td>Defensas</td><td>Protegen la portería, recuperan el balón y colaboran en la salida.</td></tr>
+        <tr><td>Centrocampistas</td><td>Conectan defensa y ataque, y gestionan el ritmo del juego.</td></tr>
+        <tr><td>Delanteros</td><td>Crean ocasiones y finalizan las jugadas.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="tactica" data-toc="Táctica y formaciones">Táctica y formaciones</h2>
+    <p>Una formación describe cómo se reparten los jugadores de campo. Se lee de atrás hacia delante: un 4-3-3 significa cuatro defensas, tres centrocampistas y tres delanteros. Es un punto de partida, porque durante el partido los equipos modifican sus posiciones con y sin balón.</p>
+    <div class="formations" role="tablist" aria-label="Elegir formación">
+      <button class="on" data-f="433" role="tab">4-3-3</button>
+      <button data-f="442" role="tab">4-4-2</button>
+      <button data-f="4231" role="tab">4-2-3-1</button>
+      <button data-f="352" role="tab">3-5-2</button>
+    </div>
+    <figure class="pitch">
+      <svg viewBox="0 0 400 260" role="img" aria-label="Esquema de la formación seleccionada" id="pitchsvg">
+        <rect width="400" height="260" fill="#1f7a45"/>
+        <g fill="none" stroke="#ffffffcc" stroke-width="1.6">
+          <rect x="12" y="12" width="376" height="236"/>
+          <line x1="200" y1="12" x2="200" y2="248"/>
+          <circle cx="200" cy="130" r="30"/>
+          <rect x="12" y="75" width="52" height="110"/><rect x="336" y="75" width="52" height="110"/>
+          <rect x="12" y="103" width="20" height="54"/><rect x="368" y="103" width="20" height="54"/>
+        </g>
+        <g id="dots"></g>
+      </svg>
+      <figcaption id="pitchcap">Esquema orientativo del 4-3-3. El equipo ataca hacia la derecha.</figcaption>
+    </figure>
+    <p class="tabnote" id="tabnote"></p>
+
+    <h2 id="competiciones" data-toc="Competiciones">Competiciones principales</h2>
+    <p>La competición más seguida es la Copa Mundial masculina de la FIFA. La edición de 2026, la 23.ª, se celebró en Estados Unidos, México y Canadá con 48 selecciones. España venció 1-0 a Argentina en la final del 19 de julio de 2026, con gol de Ferran Torres en la prórroga, según los resultados publicados. La FIFA comunicó una asistencia total récord de 6.810.966 espectadores.</p>
+    <table>
+      <thead><tr><th>Ámbito</th><th>Ejemplos</th><th>Organiza</th></tr></thead>
+      <tbody>
+        <tr><td>Mundial</td><td>Copa Mundial masculina y femenina</td><td>FIFA</td></tr>
+        <tr><td>Continental de selecciones</td><td>Eurocopa, Copa América, Copa Africana de Naciones</td><td>UEFA, CONMEBOL, CAF</td></tr>
+        <tr><td>Continental de clubes</td><td>Champions League, Europa League, Conference League</td><td>UEFA</td></tr>
+        <tr><td>Ligas nacionales</td><td>LaLiga, Premier League, Bundesliga, Serie A, Ligue 1</td><td>Ligas y federaciones nacionales</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="mas" data-toc="Más allá del campo">Más allá del campo</h2>
+    <p>El fútbol es también una industria, un espacio de identidad colectiva y un campo de innovación tecnológica. El VAR y otras herramientas de arbitraje, el análisis de datos y el scouting han cambiado la forma de preparar partidos y fichar jugadores. El fútbol femenino, por su parte, atraviesa un proceso de profesionalización con ritmos distintos según el país. Cada uno de estos temas tendrá su propia página con evidencia y fuentes.</p>
+    <div class="soon">
+      <div>Reglas en detalle<small>Próximamente</small></div>
+      <div>Táctica y análisis<small>Próximamente</small></div>
+      <div>Entrenamiento<small>Próximamente</small></div>
+      <div>Fútbol femenino<small>Próximamente</small></div>
+      <div>Estadísticas y récords<small>Próximamente</small></div>
+      <div>Tecnología<small>Próximamente</small></div>
+    </div>
+
+    <h2 id="faq" data-toc="Preguntas frecuentes">Preguntas frecuentes</h2>
+    <details><summary>¿Cuántos jugadores hay en un equipo?</summary><p>Cada equipo juega con once jugadores en el campo, uno de ellos portero. Los equipos pueden contar con suplentes según el reglamento de la competición.</p></details>
+    <details><summary>¿Cuánto dura un partido?</summary><p>Dos tiempos de 45 minutos, más el tiempo añadido por el árbitro. Algunas fases de competiciones eliminatorias incluyen prórroga y penaltis si hay empate.</p></details>
+    <details><summary>¿Qué organismo decide las reglas?</summary><p>The IFAB, que publica cada año las Reglas de Juego. Las federaciones y competiciones las aplican y pueden añadir normas propias de organización.</p></details>
+    <details><summary>¿Cómo sé si una regla sigue vigente?</summary><p>Comprueba la edición actual en el sitio de The IFAB. La edición 2026/27 se aplica desde el 1 de julio de 2026.</p></details>
+
+    <h2 id="fuentes" data-toc="Fuentes">Fuentes y bibliografía</h2>
+    <ol class="sources">
+      <li>The IFAB. <a href="https://www.theifab.com/" target="_blank" rel="noopener">Laws of the Game 2026/27 y circulares</a>. Edición vigente desde el 1 de julio de 2026.</li>
+      <li>FIFA. <a href="https://www.fifa.com/" target="_blank" rel="noopener">Información institucional y de la Copa Mundial 2026</a>.</li>
+      <li>UEFA. <a href="https://www.uefa.com/" target="_blank" rel="noopener">Competiciones europeas</a>.</li>
+      <li>RFEF. <a href="https://rfef.es/" target="_blank" rel="noopener">Real Federación Española de Fútbol</a>.</li>
+      <li>LaLiga. <a href="https://www.laliga.com/" target="_blank" rel="noopener">Competición nacional</a>.</li>
+    </ol>
+    <p class="note">Este artículo es una introducción divulgativa. Los datos con fecha, como resultados y reglas vigentes, se revisan periódicamente; si detectas un error, indícanoslo para corregirlo. Pizarra Verde no está afiliada a FIFA, UEFA ni a ninguna otra institución citada.</p>
+  </article>
+</div>
+
+<footer>
+  <div class="foot">
+    <div><strong>Pizarra Verde</strong><br>Enciclopedia del fútbol con fuentes verificables.</div>
+    <div>Sobre nosotros · Metodología editorial · Política de correcciones · Contacto</div>
+    <div>© 2026 Pizarra Verde</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  try{var t=localStorage.getItem('pv-theme');if(t)root.setAttribute('data-theme',t);}catch(e){}
+  if(!root.getAttribute('data-theme')&&window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)root.setAttribute('data-theme','dark');
+  var btn=document.getElementById('theme');
+  function label(){btn.textContent=root.getAttribute('data-theme')==='dark'?'Modo claro':'Modo oscuro';}
+  label();
+  btn.addEventListener('click',function(){
+    var n=root.getAttribute('data-theme')==='dark'?'light':'dark';
+    root.setAttribute('data-theme',n);label();
+    try{localStorage.setItem('pv-theme',n);}catch(e){}
+  });
+
+  // Índice automático
+  var toc=document.getElementById('toc');
+  var heads=[].slice.call(document.querySelectorAll('article h2[data-toc]'));
+  heads.forEach(function(h){
+    var li=document.createElement('li'),a=document.createElement('a');
+    a.href='#'+h.id;a.textContent=h.getAttribute('data-toc');li.appendChild(a);toc.appendChild(li);
+  });
+  var links=[].slice.call(toc.querySelectorAll('a'));
+
+  // Barra de progreso y sección activa
+  var bar=document.getElementById('progress');
+  function onScroll(){
+    var d=document.documentElement,h=d.scrollHeight-d.clientHeight;
+    bar.style.width=(h>0?d.scrollTop/h*100:0)+'%';
+    var cur=heads[0];
+    heads.forEach(function(x){if(x.getBoundingClientRect().top<140)cur=x;});
+    links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+cur.id);});
+  }
+  addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  // Tiempo de lectura
+  var words=document.getElementById('article').innerText.trim().split(/\s+/).length;
+  document.getElementById('readtime').textContent='Lectura: ~'+Math.max(1,Math.round(words/220))+' min';
+
+  // Formaciones (posiciones de cada línea, de portero a delantero)
+  var F={
+    '433':{name:'4-3-3',lines:[1,4,3,3],note:'Tres delanteros abiertos y un centro del campo de tres. Exige laterales con recorrido y compromiso defensivo del frente de ataque.'},
+    '442':{name:'4-4-2',lines:[1,4,4,2],note:'Dos líneas de cuatro muy ordenadas y dos delanteros. Es fácil de entender y de entrenar, aunque puede quedarse corto en el centro del campo.'},
+    '4231':{name:'4-2-3-1',lines:[1,4,2,3,1],note:'Dos pivotes protegen a la defensa y tres mediapuntas apoyan a un único delantero.'},
+    '352':{name:'3-5-2',lines:[1,3,5,2],note:'Tres centrales y dos carrileros que suben y bajan por banda. Gana presencia en el centro, pero deja espacios si los carrileros no llegan a cubrir.'}
+  };
+  var xs=[34,100,160,215,275,335];
+  function draw(key){
+    var f=F[key],g=document.getElementById('dots'),html='';
+    var n=f.lines.length,xpos=[];
+    for(var i=0;i<n;i++)xpos.push(i===0?32:78+(i-1)*(260/(n-1.0001||1)));
+    f.lines.forEach(function(c,i){
+      for(var k=0;k<c;k++){
+        var y=c===1?130:34+k*(192/(c-1));
+        html+='<circle cx="'+xpos[i].toFixed(0)+'" cy="'+y.toFixed(0)+'" r="9" fill="'+(i===0?'#e0a526':'#fff')+'" stroke="#14532d" stroke-width="2"/>';
+      }
+    });
+    g.innerHTML=html;
+    document.getElementById('pitchcap').textContent='Esquema orientativo del '+f.name+'. El equipo ataca hacia la derecha.';
+    document.getElementById('tabnote').textContent=f.note;
+  }
+  [].forEach.call(document.querySelectorAll('.formations button'),function(b){
+    b.addEventListener('click',function(){
+      [].forEach.call(document.querySelectorAll('.formations button'),function(x){x.classList.remove('on');});
+      b.classList.add('on');draw(b.getAttribute('data-f'));
+    });
+  });
+  draw('433');
+})();
+</script>
+</body>
+</html>
